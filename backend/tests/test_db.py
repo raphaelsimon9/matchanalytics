@@ -43,10 +43,10 @@ def test_log_settle_and_performance(backend, monkeypatch):
     assert c.get("/api/predictions?competition=PL").status_code == 200
     assert c.get("/api/predictions?competition=PL").status_code == 200  # idempotent
     with db.conn() as k:
-        assert k.all("SELECT count(*) AS n FROM picks")[0]["n"] == 8
+        assert k.all("SELECT count(*) AS n FROM picks")[0]["n"] == 9
 
     perf = c.get("/api/performance").json()
-    assert perf["pending"] == 8 and perf["markets"][0]["n"] == 0  # not played yet
+    assert perf["pending"] == 9 and perf["markets"][0]["n"] == 0  # not played yet
 
     with db.conn() as k:
         k.execute("UPDATE picks SET kickoff='2020-01-01T00:00:00Z'")

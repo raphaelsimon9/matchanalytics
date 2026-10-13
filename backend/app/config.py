@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 FOOTBALL_DATA_KEY = os.getenv("FOOTBALL_DATA_KEY", "")   # football-data.org (free tier)
 ODDS_API_KEY = os.getenv("ODDS_API_KEY", "")             # the-odds-api.com (optional)

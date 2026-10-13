@@ -2,6 +2,7 @@ services:
   - type: web
     name: sportsbet-api
     runtime: docker
+    plan: free
     rootDir: backend
     healthCheckPath: /api/health
     envVars:
