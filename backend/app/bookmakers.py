@@ -2,6 +2,8 @@
 so we do NOT automate logins or bet placement. We build the slip and hand the user off to the site,
 where they confirm and place the bet themselves. If a bookmaker gives you partner/affiliate API access,
 add an adapter here implementing `Bookmaker`."""
+from dotenv import load_dotenv
+load_dotenv()
 from dataclasses import dataclass
 from typing import Protocol
 

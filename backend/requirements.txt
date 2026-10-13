@@ -3,3 +3,4 @@ fastapi>=0.115
    httpx>=0.27
    pydantic>=2.12
    pytest>=8
+   python-dotenv
