@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: sportsbet-api
+    runtime: docker
+    rootDir: backend
+    healthCheckPath: /api/health
+    envVars:
+      - key: FOOTBALL_DATA_KEY
+        sync: false
+      - key: ODDS_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: DATABASE_URL
+        sync: false
