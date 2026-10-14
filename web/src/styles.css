@@ -31,3 +31,4 @@ button:disabled { opacity:.5; } button.ghost { background:transparent; color:var
 .tablewrap { overflow-x:auto; margin:10px 0; } table { border-collapse:collapse; width:100%; font-size:13px; }
 th,td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); white-space:nowrap; } th { color:var(--mut); font-weight:600; }
 tr.strong td { font-weight:700; } .pos { color:var(--acc); } .neg { color:var(--err); } .small { font-size:12px; }
+.oddsbar { display:flex; flex-wrap:wrap; gap:6px 14px; font-size:12px; margin:6px 0 10px; }

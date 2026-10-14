@@ -21,8 +21,7 @@ CREATE TABLE IF NOT EXISTS picks (
 
 OUTCOMES = {
     "home": lambda h, a: h > a, "draw": lambda h, a: h == a, "away": lambda h, a: h < a,
-    "over15": lambda h, a: h + a > 1, "over25": lambda h, a: h + a > 2,
-    "under15": lambda h, a: h + a < 2,
+    "over15": lambda h, a: h + a > 1, "under15": lambda h, a: h + a < 2, "over25": lambda h, a: h + a > 2,
     "under25": lambda h, a: h + a < 3,
     "btts_yes": lambda h, a: h > 0 and a > 0, "btts_no": lambda h, a: h == 0 or a == 0,
 }

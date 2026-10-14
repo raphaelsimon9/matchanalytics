@@ -22,6 +22,7 @@ def backend(request, tmp_path, monkeypatch):
 
 def test_log_settle_and_performance(backend, monkeypatch):
     from app import db, providers
+    from app import odds as oddsmod
     from app.main import app
 
     with db.conn() as c:
@@ -32,10 +33,10 @@ def test_log_settle_and_performance(backend, monkeypatch):
 
     async def fin(comp): return hist
     async def up(comp, days): return [{"id": 999, "kickoff": future, "home": "Strong FC", "away": "Weak FC"}]
-    async def odds(comp): return []
+    async def gather(comp): return {}, []
     monkeypatch.setattr(providers, "finished_matches", fin)
     monkeypatch.setattr(providers, "upcoming", up)
-    monkeypatch.setattr(providers, "odds_events", odds)
+    monkeypatch.setattr(oddsmod, "gather", gather)
 
     c = TestClient(app)
     assert c.get("/api/health").json()["db"] == backend

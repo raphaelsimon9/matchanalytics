@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Results from "./Results.jsx";
 
-const APP_NAME = "Stat90"; // brand name here
+const APP_NAME = "Stat90"; // change your brand name here
 
 const API = import.meta.env.VITE_API_URL || "http://localhost:8000";
 const pct = (x) => `${Math.round(x * 100)}%`;
@@ -21,6 +21,22 @@ function Form({ f }) {
     <span className="form">
       {f.last5.split("").map((c, i) => <i key={i} className={`f${c}`}>{c}</i>)}
     </span>
+  );
+}
+
+function OddsStatus({ data }) {
+  const ps = data.odds_providers || [];
+  if (ps.length === 0)
+    return <p className="warn">No odds provider configured, so you only see model favourites. Add an odds key on the server to get value picks.</p>;
+  return (
+    <div className="oddsbar">
+      {ps.map((p) => (
+        <span key={p.provider} className={p.ok ? "pos" : "neg"}>
+          {p.provider}: {p.ok ? `${p.matched} matches priced` : p.error}
+          {p.quota_left != null && ` · ${p.quota_left} left`}
+        </span>
+      ))}
+    </div>
   );
 }
 
@@ -72,7 +88,7 @@ function MatchCard({ m, onAdd, inSlip }) {
             <b>{r.pick}</b> <small>({r.market})</small>
             <div className="sub">
               Model {pct(r.prob)}
-              {r.odds ? ` · odds ${r.odds} (${r.bookmaker}) · edge ${(r.edge * 100).toFixed(1)}%` : ` · fair odds ${r.fair_odds} · no market odds`}
+              {r.odds ? ` · odds ${r.odds} (${r.bookmaker}${r.preferred === false ? ", not your bookmaker" : ""}) · edge ${(r.edge * 100).toFixed(1)}%` : ` · fair odds ${r.fair_odds} · no market odds`}
               {` · ${r.confidence} confidence`}
               {r.stake_pct > 0 && ` · suggested ≤ ${(r.stake_pct * 100).toFixed(1)}% of bankroll`}
             </div>
@@ -189,7 +205,7 @@ export default function App() {
         <section>
           {loading && <p className="muted">Crunching numbers…</p>}
           {error && <p className="err">{error}</p>}
-          {data && !data.odds_available && <p className="warn">No live odds loaded (set ODDS_API_KEY). Showing model-only favourites; value picks need odds.</p>}
+          {data && <OddsStatus data={data} />}
           {data && shown.length === 0 && !loading && <p className="muted">No qualifying picks in this window. Skipping is a valid strategy.</p>}
           {shown.map((m) => <MatchCard key={m.id} m={m} inSlip={inSlip} onAdd={(s) => setSlip([...slip, s])} />)}
         </section>

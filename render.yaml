@@ -2,7 +2,6 @@ services:
   - type: web
     name: stat90-api
     runtime: docker
-    plan: free
     rootDir: backend
     healthCheckPath: /api/health
     envVars:
@@ -10,7 +9,15 @@ services:
         sync: false
       - key: ODDS_API_KEY
         sync: false
+      - key: ODDS_PAPI_KEY
+        sync: false
       - key: CORS_ORIGINS
         sync: false
       - key: DATABASE_URL
+        sync: false
+      - key: API_FOOTBALL_KEY
+        sync: false
+      - key: ODDSAPIIO_KEY
+        sync: false
+      - key: PREFERRED_BOOKMAKERS
         sync: false
