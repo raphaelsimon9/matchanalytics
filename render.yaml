@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: stat90-api
+    name: matchinsights-api
     runtime: docker
     rootDir: backend
     healthCheckPath: /api/health
