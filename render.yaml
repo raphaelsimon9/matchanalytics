@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: sportsbet-api
+    name: stat90-api
     runtime: docker
     plan: free
     rootDir: backend
