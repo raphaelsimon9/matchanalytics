@@ -203,7 +203,7 @@ export default function App() {
       {view === "results" ? <Results /> : (
       <main className="layout">
         <section>
-          {loading && <p className="muted">Crunching numbers…</p>}
+          {loading && <p className="muted">Analysing…</p>}
           {error && <p className="err">{error}</p>}
           {data && <OddsStatus data={data} />}
           {data && shown.length === 0 && !loading && <p className="muted">No qualifying picks in this window. Skipping is a valid strategy.</p>}
