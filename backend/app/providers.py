@@ -82,12 +82,12 @@ async def odds_events(comp: str):
     async def go():
         async with httpx.AsyncClient(timeout=25) as c:
             r = await c.get(f"https://api.the-odds-api.com/v4/sports/{ODDS_SPORT_KEYS[comp]}/odds",
-                            params={"apiKey": ODDS_API_KEY, "regions": "eu,uk", "markets": "h2h,totals",
+                            params={"apiKey": ODDS_API_KEY, "regions": "eu", "markets": "h2h,totals",
                                     "oddsFormat": "decimal"})
             r.raise_for_status()
             return r.json()
     try:
-        return await cached(f"odds:{comp}", 600, go)
+        return await cached(f"odds:{comp}", 21600, go)
     except Exception:
         return []  # odds are optional; predictions still work without them
 
