@@ -1,6 +1,6 @@
 {
-  "name": "MatchInsights",
-  "short_name": "MatchInsights",
+  "name": "MatchAnalytics",
+  "short_name": "MatchAnalytics",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",

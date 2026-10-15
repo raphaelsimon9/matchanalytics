@@ -1,4 +1,4 @@
-# MatchInsights – football match analysis, value-pick recommendations, slip builder
+# MatchAnalytics – football match analysis, value-pick recommendations, slip builder
 
 ## Run locally
 Backend:
@@ -21,7 +21,7 @@ Web (also installable as a mobile PWA):
 - Web: Vercel/Netlify, root dir `web`, env VITE_API_URL=https://<your-api-url>
 
 ## Results log database
-- Local: SQLite file (`DB_PATH`, default `matchinsights.db`). Nothing to set up.
+- Local: SQLite file (`DB_PATH`, default `matchanalytics.db`). Nothing to set up.
 - Deployed: set `DATABASE_URL` to a Postgres connection string (Neon/Supabase free tier). Install with `pip install -r requirements-prod.txt` (Docker does this automatically).
 - Verify after deploy: `GET /api/health` shows `"db": "postgres"`, and `GET /api/health/db` returns ok.
 - Test against Postgres: `TEST_DATABASE_URL=postgresql://... python -m pytest`

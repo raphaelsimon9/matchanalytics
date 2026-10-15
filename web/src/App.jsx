@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Results from "./Results.jsx";
 
-const APP_NAME = "Match Insights"; // change your brand name here
+const APP_NAME = "Match Analytics"; // brand name here
 
 const API = import.meta.env.VITE_API_URL || "http://localhost:8000";
 const pct = (x) => `${Math.round(x * 100)}%`;

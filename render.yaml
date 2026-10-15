@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: matchinsights-api
+    name: matchanalytics-api
     runtime: docker
     rootDir: backend
     healthCheckPath: /api/health
